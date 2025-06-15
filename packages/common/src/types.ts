@@ -6,6 +6,10 @@ export const signupSchema = z.object({
 })
 
 export const signinSchema = z.object({
-    username:z.string({required_error:"usename is required"}),
+    username:z.string({required_error:"Username is required"}),
     password:z.string({required_error:"Password is required"})
+})
+
+export const CreateRoomSchema = z.object({
+    name: z.string().min(3).max(20)
 })

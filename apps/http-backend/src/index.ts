@@ -1,8 +1,9 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
-import {signupSchema} from "@repo/validation"
+import {signupSchema} from "@repo/common/types"
 import { middleware } from './middleware';
+import {JWT_SECRET} from '@repo/backend-common/config';
 const app = express();
 
 app.use(express.json());
@@ -20,7 +21,7 @@ app.post("/signup",async(req:Request,res:Response)=>{
     const userId =1;
     const token = jwt.sign({
         userId
-    },"JWT_SECRET")
+    },JWT_SECRET)
 
     res.json({token})
     
